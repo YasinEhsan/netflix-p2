@@ -21,6 +21,14 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        layout.minimumLineSpacing = 40
+        layout.minimumInteritemSpacing = 40
+        
+        let width = view.frame.size.width / 3
+        layout.itemSize = CGSize(width: width, height: width * 3 / 2)
+        
         let url = URL(string: "https://api.themoviedb.org/3/movie/297762/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
@@ -33,6 +41,7 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
                 
                 self.movies = dataDictionary["results"] as! [[String: Any]]
                 
+                self.collectionView.reloadData()
                 print(self.movies)
                 
                 
@@ -46,7 +55,7 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieGridCell", for: IndexPath) as! MovieGridCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieGridCell", for: indexPath) as! MovieGridCell
         
         let movie = movies[indexPath.item]
         
