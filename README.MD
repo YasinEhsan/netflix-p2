@@ -20,5 +20,8 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 
 
+### Debug
+- "Unknown class in Interface Builder file"
+  - SOLUTION: select custom views on storyboard under Class identifier select module proj name and hit ENTER
 ### Useful Links
 - [git branch conflicts + hidden file contents](https://guides.codepath.com/ios/Using-Git-with-Terminal)
