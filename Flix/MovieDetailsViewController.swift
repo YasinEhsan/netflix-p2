@@ -9,8 +9,17 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController {
     
+    
+    @IBOutlet weak var backdropView: UIImageView!
+    
+    @IBOutlet weak var posterView: UIImageView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
     var movie: [String:Any]!
 
+    @IBOutlet weak var synopsisLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
